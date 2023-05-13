@@ -1,0 +1,24 @@
+{
+  "name": "tour",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "import": "node import-data.js --import",
+    "delete": "node import-data.js --delete"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.1.0",
+    "nodemailer": "^6.9.1",
+    "nodemon": "^2.0.22",
+    "validator": "^13.9.0"
+  }
+}
