@@ -1,7 +1,7 @@
 const TourModel = require('../model/tour');
 const APIFeatures = require('../utils/apiFeatures');
 
-const factory = require('./factory');
+// const factory = require('./factory');
 
 const catchAsync = fu => {
     return (req, res, next) => {
