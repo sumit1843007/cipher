@@ -5,7 +5,7 @@ import { showAlert } from './alerts';
 export const bookTour = async tourId => {
     try {
         // 1) Get checkout session from API
-        const session = await axios(`http://localhost:8000/api/bookings/check-out/${tourId}`); // call 
+        const session = await axios(`/api/bookings/check-out/${tourId}`); // call 
         console.log(session);
 
         // 2) Create checkout form + chanre credit card

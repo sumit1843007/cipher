@@ -6,7 +6,7 @@ export const login = async (email, password) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://localhost:8000/api/user/login',
+      url: '/api/user/login',
       data: {
         email, password
       }
@@ -32,7 +32,7 @@ export const signUp = async (name, email, password, confirmPassword) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://localhost:8000/api/user/signUp',
+      url: '/api/user/signUp',
       data: {
         name, email, password, confirmPassword
       }
@@ -59,7 +59,7 @@ export const logout = async () => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://localhost:8000/api/user/logout',
+      url: '/api/user/logout',
     });
     console.log(res);
     if (res.data.status === 'success') window.location.reload(true);
