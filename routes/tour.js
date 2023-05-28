@@ -41,7 +41,7 @@ router.route("/").get(tours.Tours)
 
 router.route('/:id')
     .get(tours.Tour)
-    .patch(Auth.protect, Auth.restrictTo('admin', 'lead-guide'), tours.updateTour)
+    .patch(Auth.protect, Auth.restrictTo('admin', 'lead-guide'), tours.uploadTourImages, tours.resizingTourImages, tours.updateTour)
     .delete(Auth.protect, Auth.restrictTo('admin', 'lead-guide'), tours.deleteTour);
 
 // router.route("/:tourId/reviews").post(Auth.protect, Auth.restrictTo('user'), Review.createReview);

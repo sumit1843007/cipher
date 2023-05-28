@@ -2,17 +2,22 @@ const dotenv = require('dotenv');
 // require('dotenv').config();
 dotenv.config({ path: './config.env' });
 
+const cookieParser = require('cookie-parser');
+
+
+
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controller/errorController');
 
 const toursRouters = require("./routes/tour");
 const usersRouters = require("./routes/user");
 const reviewRouters = require("./routes/review");
+const viewRouters = require("./routes/viewRouter");
+const bookings = require("./routes/booking");
 const express = require('express');
+const path = require('path');
 
 const mongoose = require('mongoose');
-
-
 
 const app = express();
 
@@ -24,11 +29,24 @@ mongoose.connect(DB).then(() => {
     console.log(err);
 });
 
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cookieParser());
+
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+
+
+
+app.use('/', viewRouters);
 
 app.use('/api/tours', toursRouters);
 app.use('/api/user', usersRouters);
 app.use('/api/reviews', reviewRouters);
+app.use('/api/bookings', bookings);
 
 
 app.get('*', (err, req, res, next) => {

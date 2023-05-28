@@ -40,6 +40,7 @@ const deleteData = async () => {
     try {
         await tourSchema.deleteMany();
         await userSchema.deleteMany();
+        await reviewSchema.deleteMany();
         console.log("delete data to db");
     } catch (error) {
         if (error) {

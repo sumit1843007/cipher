@@ -1,4 +1,5 @@
 const express = require('express');
+
 const User = require("../controller/user");
 const Auth = require("../controller/auth");
 
@@ -27,16 +28,18 @@ const router = express.Router();
 
 // router.delete("/:id", middleware, tours.deleteTour);
 
+
 router.route("/signUp").post(Auth.signUp);
 router.route("/login").post(Auth.login);
+router.route("/logout").post(Auth.logout);
 router.route("/forgetPassword").post(Auth.forgetPassword);
 router.route("/resetPassword/:token").patch(Auth.resetPassword);
 
 // protecting route after this middleware
 router.use(Auth.protect);
 
-router.route("/getMe").get(User.getMe); //single user
-router.route("/updateMe").patch(User.updateMe); // update fields value without password ex - NAME EMAIL
+router.route("/getMe").get(User.getMe); //single user details
+router.route("/updateMe").patch(User.uploadUserPhoto, User.resizeUserPhoto, User.updateMe); // update fields value without password ex - NAME EMAIL
 router.route("/deleteMe").delete(User.deleteMe); // delete users means soft delete active = false
 router.route("/updatePassword").patch(Auth.updatePassword); // update only password
 

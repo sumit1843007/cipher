@@ -24,6 +24,7 @@ const userSchema = new Schema({
     },
     photo: {
         type: String,
+        default: 'default.jpg'
     },
     password: {
         type: String,
