@@ -16,6 +16,7 @@ const viewRouters = require("./routes/viewRouter");
 const bookings = require("./routes/booking");
 const express = require('express');
 const path = require('path');
+const compression = require('compression');
 
 const mongoose = require('mongoose');
 
@@ -29,6 +30,7 @@ mongoose.connect(DB).then(() => {
     console.log(err);
 });
 
+app.use(compression());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
